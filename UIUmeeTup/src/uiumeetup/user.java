@@ -12,7 +12,7 @@ package uiumeetup;
 public class user {
     String name;
     int id;
-     String pass;
+     int pass;
     String Dept;
     String currentourse[]=new String[5];
     int notification;
@@ -34,11 +34,11 @@ public class user {
         this.id = id;
     }
 
-    public String getPass() {
+    public int getPass() {
         return pass;
     }
 
-    public void setPass(String pass) {
+    public void setPass(int pass) {
         this.pass = pass;
     }
 
