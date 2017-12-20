@@ -12,11 +12,11 @@ package uiumeetup;
 public class user {
     String name;
     int id;
-    private String pass;
+     String pass;
     String Dept;
     String currentourse[]=new String[5];
     int notification;
-    int cgpa;
+    double cgpa;
 
     public String getName() {
         return name;
@@ -66,11 +66,11 @@ public class user {
         this.notification = notification;
     }
 
-    public int getCgpa() {
+    public double getCgpa() {
         return cgpa;
     }
 
-    public void setCgpa(int cgpa) {
+    public void setCgpa(double  cgpa) {
         this.cgpa = cgpa;
     }
     
