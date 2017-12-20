@@ -36,12 +36,18 @@ public class mainmenu extends javax.swing.JFrame {
         setId = new javax.swing.JTextField();
         setPass = new javax.swing.JPasswordField();
         login = new javax.swing.JButton();
+        checkStatus = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Select user type");
 
         typeAdmin.setText("Admin");
+        typeAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeAdminActionPerformed(evt);
+            }
+        });
 
         typeteacher.setText("Teacher");
 
@@ -51,39 +57,58 @@ public class mainmenu extends javax.swing.JFrame {
 
         jLabel3.setText("Password");
 
+        setId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setIdActionPerformed(evt);
+            }
+        });
+
         login.setText("Login");
+        login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginActionPerformed(evt);
+            }
+        });
+
+        checkStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkStatusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
                         .addComponent(typeAdmin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(typeteacher)
                         .addGap(18, 18, 18)
                         .addComponent(typeStudent)
-                        .addContainerGap(78, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(setPass, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(setId)))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(setId)
+                            .addComponent(checkStatus, javax.swing.GroupLayout.Alignment.TRAILING)))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(203, 203, 203)
                 .addComponent(login)
-                .addGap(174, 174, 174))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,13 +127,55 @@ public class mainmenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(setPass, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
+                .addComponent(checkStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(login)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void setIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_setIdActionPerformed
+
+    private void typeAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeAdminActionPerformed
+        
+
+        
+        CheckClass.setClassType("Admin");
+        
+        
+        
+        
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_typeAdminActionPerformed
+
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+       int id=Integer.parseInt(setId.getText()); 
+
+       int pass=Integer.parseInt(setPass.getText());
+       
+       boolean check=CheckClass.selectClass(id,pass);
+       if(check==true)
+       {
+           checkStatus.setText("login successful");
+       }
+       else{
+           checkStatus.setText(CheckClass.classType);
+       }
+       
+
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_loginActionPerformed
+
+    private void checkStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkStatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,6 +213,7 @@ public class mainmenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField checkStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
