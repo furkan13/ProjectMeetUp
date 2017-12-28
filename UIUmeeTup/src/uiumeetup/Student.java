@@ -33,6 +33,14 @@ public class Student extends user{
 
     public Student() {
     }
+
+    public int getPassword() {
+        return password;
+    }
+
+    public void setPassword(int password) {
+        this.password = password;
+    }
     
     
     
@@ -54,9 +62,9 @@ public class Student extends user{
 
     String changePass(int oldPass,int newPass)
     {
-        if(oldPass==super.getPass())
+        if(oldPass==this.getPass())
         {
-            super.setPass(newPass);
+            this.setPass(newPass);
             return("Password chaged successfully");
         }
         else 

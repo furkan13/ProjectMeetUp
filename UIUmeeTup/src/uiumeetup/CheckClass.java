@@ -36,7 +36,9 @@ public class CheckClass {
        
        else if(classType=="Teacher")
        {
-          // Teacher tea=new Teacher();
+           teacher tea=new teacher();
+           check=tea.checkTeacher(id, pass);
+           return check;
            
        }
        
