@@ -50,8 +50,18 @@ public class mainmenu extends javax.swing.JFrame {
         });
 
         typeteacher.setText("Teacher");
+        typeteacher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeteacherActionPerformed(evt);
+            }
+        });
 
         typeStudent.setText("Student");
+        typeStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeStudentActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("ID:");
 
@@ -163,9 +173,15 @@ public class mainmenu extends javax.swing.JFrame {
        if(check==true)
        {
            checkStatus.setText("login successful");
+           
+           String type=CheckClass.getClassType();
+           CheckClass.selectFrame(type);
+           this.setVisible(false);
+           
+           
        }
        else{
-           checkStatus.setText(CheckClass.classType);
+           checkStatus.setText("Wrong password or Id");
        }
        
 
@@ -176,6 +192,16 @@ public class mainmenu extends javax.swing.JFrame {
     private void checkStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkStatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_checkStatusActionPerformed
+
+    private void typeteacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeteacherActionPerformed
+        // TODO add your handling code here:
+        CheckClass.setClassType("Teacher");
+    }//GEN-LAST:event_typeteacherActionPerformed
+
+    private void typeStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeStudentActionPerformed
+        // TODO add your handling code here:
+        CheckClass.setClassType("Student");
+    }//GEN-LAST:event_typeStudentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,7 +233,15 @@ public class mainmenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mainmenu().setVisible(true);
+                mainmenu main=new mainmenu();
+                main.setVisible(true);
+        //().setVisible(true);
+               boolean visible=CheckClass.check;
+               if(visible==true)
+               {
+                   main.setVisible(false);
+               }
+                
             }
         });
     }

@@ -111,11 +111,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Teacher"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="typeteacherActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="typeStudent">
       <Properties>
         <Property name="text" type="java.lang.String" value="Student"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="typeStudentActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
