@@ -36,18 +36,46 @@ public class CheckClass {
        
        else if(classType=="Teacher")
        {
-           //call Teacher
+          // Teacher tea=new Teacher();
            
        }
        
        
        else if(classType=="Student")
        {
-           //call Student
+           Student stu=new Student();
+           check=stu.checkStudent(id, pass);
+           
        }
        return check;
        
    }
+   
+   static void  selectFrame(String type)
+   {
+       if(type.equals("Admin"))
+       {
+           
+           new Adminframe().setVisible(true);
+       }
+       
+       
+       else if(type.equals("Student"))
+       {
+           new Studentframe().setVisible(true);
+       }
+       
+       else
+       {
+           new Teacherframe().setVisible(true);
+       }
+       
+   }
+
+    public static String getClassType() {
+        return classType;
+    }
+   
    
    
    
