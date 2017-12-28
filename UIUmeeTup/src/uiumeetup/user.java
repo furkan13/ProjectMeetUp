@@ -14,7 +14,7 @@ public class user {
     int id;
      int pass;
     String Dept;
-    String currentourse[]=new String[5];
+    String course;
     int notification;
     double cgpa;
 
@@ -50,12 +50,12 @@ public class user {
         this.Dept = Dept;
     }
 
-    public String[] getCurrentourse() {
-        return currentourse;
+    public String getCurrentourse() {
+        return course;
     }
 
-    public void setCurrentourse(String[] currentourse) {
-        this.currentourse = currentourse;
+    public void setCurrentourse(String currentourse) {
+        this.course = currentourse;
     }
 
     public int getNotification() {
