@@ -45,7 +45,13 @@ public class CheckClass {
        else if(classType=="Teacher")
        {
            teacher tea=new teacher();
-           check=tea.checkTeacher(id, pass);
+           try {
+               check=tea.checkTeacher(id, pass);
+           } catch (FileNotFoundException ex) {
+               Logger.getLogger(CheckClass.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (ClassNotFoundException ex) {
+               Logger.getLogger(CheckClass.class.getName()).log(Level.SEVERE, null, ex);
+           }
            return check;
            
        }
