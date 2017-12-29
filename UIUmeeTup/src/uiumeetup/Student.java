@@ -7,12 +7,13 @@
 
 package uiumeetup;
 import java.io.*;
+import java.util.Scanner;
 
 /**
  *
  * @author kruf
  */
-public class Student extends user{
+public class Student extends user implements Serializable{
     int id;
     int password;
     String name;
@@ -20,8 +21,11 @@ public class Student extends user{
     double cgpa;
     int Trisemester;
     String course;
+    String routine;
+    String assignment;
+    String faculty;
 
-    public Student(int id, int password, String name, String dept, double cgpa, int Trisemester, String course) {
+    public Student(String name,int id, String dept,int Trisemester,int password,double cgpa,  String course,String routine) {
         this.id = id;
         this.password = password;
         this.name = name;
@@ -29,6 +33,7 @@ public class Student extends user{
         this.cgpa = cgpa;
         this.Trisemester = Trisemester;
         this.course = course;
+        this.routine=routine;
     }
 
     public Student() {
@@ -44,14 +49,31 @@ public class Student extends user{
     
     
     
-    void write(Student writeStu)
+    void write(Student writeStu) throws Exception
     {
-        //write student object in file
+        File f=new File("student.txt");
+         FileOutputStream fo = new FileOutputStream(f);
+        ObjectOutputStream oos = new ObjectOutputStream(fo);
+        oos.writeObject(writeStu);
+        oos.close();
+        
+        
     }
     
-    void deletStudent(int delstu)
+    void deletStudent(int delstu) throws IOException, ClassNotFoundException
     {
         //delete srudent from file
+        File f=new File("student.txt");
+         FileInputStream fo = new FileInputStream(f);
+        ObjectInputStream oos = new ObjectInputStream(fo);
+       Student s1 = (Student) oos.readObject();
+       if(this.id==delstu)
+       {
+           oos.close();
+       }      
+         oos.close();
+        
+        
     }
     
    /* Student view(int view)
@@ -78,18 +100,40 @@ public class Student extends user{
         
     }
     
-    boolean checkStudent(int id,int pass)
+    boolean checkStudent(int id,int pass) throws FileNotFoundException, IOException, ClassNotFoundException
         {
-            /*make a object and run while loop to find id first
-            if id matches read the object and check pass if matches both
-            return true;
-            */
-            
-            
-            return true;
+            File f=new File("student.txt");
+         FileInputStream fo = new FileInputStream(f);
+        ObjectInputStream oos = new ObjectInputStream(fo);
+       Student s1 = (Student) oos.readObject();
+       Scanner sc=new Scanner(f);
+       
+       while(s1.id==id)
+       {
+           if(s1.pass==pass)
+           {
+               
+               oos.close();
+               return true;
+           }
+       }
+      
+         oos.close();
+          return true;
         }
+            
+    public String toString()
+    {
+        
+        return (""+name+ " "+id+ " "+ dept+" " + Trisemester + " "+password+" "+cgpa+" "+ course+ " "+ routine+" "+faculty);
+    }
 
-    
+    Student getclass(int id) throws Exception
+    {
+        Student stu=new Student();
+        //
+        return stu;
+    }
     
     
     

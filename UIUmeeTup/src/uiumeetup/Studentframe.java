@@ -41,6 +41,15 @@ public class Studentframe extends javax.swing.JFrame {
         FACULTY = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtarea = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        txtassignment = new javax.swing.JTextField();
+        txtroutine = new javax.swing.JTextField();
+        txtfaculty = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,37 +85,107 @@ public class Studentframe extends javax.swing.JFrame {
         txtarea.setRows(5);
         jScrollPane1.setViewportView(txtarea);
 
+        jButton1.setText("Details");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Edit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Edit");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Edit");
+
+        jButton5.setText("Change password");
+
+        jButton6.setText("Log out");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CGPA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ASSIGNMENT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ROUTINE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(FACULTY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CGPA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ASSIGNMENT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ROUTINE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(FACULTY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(133, Short.MAX_VALUE))
+                        .addGap(229, 229, 229)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton4)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtassignment, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtfaculty))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtroutine)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(CGPA, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(CGPA, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ASSIGNMENT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4)
+                            .addComponent(txtassignment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ROUTINE, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3)))
+                    .addComponent(txtroutine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FACULTY, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2)
+                    .addComponent(txtfaculty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ASSIGNMENT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ROUTINE, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(FACULTY, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -114,111 +193,100 @@ public class Studentframe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CGPAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CGPAActionPerformed
-/*Student e=null;//, p=null;
-       FileInputStream f=null;
-       ObjectInputStream in =null;
-       
-       try {
-           Student p = new Student(3.9,"Sunday-computer architecture,monday-java","C.A-farabi,java-rubaba hasan");
-            FileOutputStream fo=new FileOutputStream("input.txt");
-            ObjectOutputStream oos=new ObjectOutputStream(fo);
-            oos.writeObject(p);
-            oos.close();
-            
-           
-           
-           f=new FileInputStream("input.txt");
-           in = new ObjectInputStream(f);
-           
-        e = (Student) in.readObject();
-        //in.writeObject(e);
-         //double s=Student.cgpa;
-         //p = (Student) in.readObject();
-         in.close();
-         f.close();
-                System.out.println(e.cgpa);
 
+      int id=CheckClass.getId();
+      Student stu=new Student();
+      stu.id=id;
+        try {
+            stu=stu.getclass(stu.id);
         } catch (Exception ex) {
-            
-            ex.printStackTrace();
-        } 
-        //Double a=Double.parseDouble(cgpatxt.getText());
-        txtarea.setText(Double.toString(e.cgpa));
-        */
+            Logger.getLogger(Studentframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      String cg=String.valueOf(stu.cgpa);
+      txtarea.setText(cg);
+              
+      
+      
+        
+        
+        
     }//GEN-LAST:event_CGPAActionPerformed
 
     private void ASSIGNMENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ASSIGNMENTActionPerformed
         // TODO add your handling code here:
        // String assign= (txtarea.getText());
+       int id=CheckClass.getId();
+      Student stu=new Student();
+      stu.id=id;
+        try {
+            stu=stu.getclass(stu.id);
+        } catch (Exception ex) {
+            Logger.getLogger(Studentframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+      txtarea.setText(stu.assignment);
     }//GEN-LAST:event_ASSIGNMENTActionPerformed
 
     private void ROUTINEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ROUTINEActionPerformed
-     /* Student e=null;//, p=null;
-       FileInputStream f=null;
-       ObjectInputStream in =null;
-       
-       try {
-           Student p = new Student(3.9,"Sunday-computer architecture,monday-java","C.A-farabi,java-rubaba hasan");
-            FileOutputStream fo=new FileOutputStream("input.txt");
-            ObjectOutputStream oos=new ObjectOutputStream(fo);
-            oos.writeObject(p);
-            oos.close();
-            
-           
-           
-           f=new FileInputStream("input.txt");
-           in = new ObjectInputStream(f);
-           
-        e = (Student) in.readObject();
-        //in.writeObject(e);
-         //double s=Student.cgpa;
-         //p = (Student) in.readObject();
-         in.close();
-         f.close();
-                System.out.println(e.routine);
-
+   
+        int id=CheckClass.getId();
+      Student stu=new Student();
+      stu.id=id;
+        try {
+            stu=stu.getclass(stu.id);
         } catch (Exception ex) {
-            
-            ex.printStackTrace();
-        } 
-       txtarea.setText(e.routine);
-        */
+            Logger.getLogger(Studentframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      txtarea.setText(stu.routine);
+      
     }//GEN-LAST:event_ROUTINEActionPerformed
 
     private void FACULTYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FACULTYActionPerformed
-        // TODO add your handling code here:
-       /*  Student e=null;//, p=null;
-       FileInputStream f=null;
-       ObjectInputStream in =null;
-       
-       try {
-           Student p = new Student(3.9,"Sunday-computer architecture,monday-java","C.A-farabi,java-rubaba hasan");
-            FileOutputStream fo=new FileOutputStream("input.txt");
-            ObjectOutputStream oos=new ObjectOutputStream(fo);
-            oos.writeObject(p);
-            oos.close();
-            
-           
-           
-           f=new FileInputStream("input.txt");
-           in = new ObjectInputStream(f);
-           
-        e = (Student) in.readObject();
-        //in.writeObject(e);
-         //double s=Student.cgpa;
-         //p = (Student) in.readObject();
-         in.close();
-         f.close();
-                System.out.println(e.routine);
-
+     
+        
+        int id=CheckClass.getId();
+      Student stu=new Student();
+      stu.id=id;
+        try {
+            stu=stu.getclass(stu.id);
         } catch (Exception ex) {
-            
-            ex.printStackTrace();
-        } 
-       txtarea.setText(e.faculty);
-        */
+            Logger.getLogger(Studentframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       txtarea.setText(stu.faculty);
         
     }//GEN-LAST:event_FACULTYActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new editrtn().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new mainmenu().setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        int id=CheckClass.getId();
+      Student stu=new Student();
+      stu.id=id;
+        try {
+            stu=stu.getclass(stu.id);
+        } catch (Exception ex) {
+            Logger.getLogger(Studentframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+      txtarea.setText(stu.toString());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     
     public static void main(String args[]) {
@@ -258,7 +326,16 @@ public class Studentframe extends javax.swing.JFrame {
     private javax.swing.JButton CGPA;
     private javax.swing.JButton FACULTY;
     private javax.swing.JButton ROUTINE;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtarea;
+    private javax.swing.JTextField txtassignment;
+    private javax.swing.JTextField txtfaculty;
+    private javax.swing.JTextField txtroutine;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,11 +5,21 @@
  */
 package uiumeetup;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.Scanner;
+
 /**
  *
  * @author kruf
  */
-public class teacher extends user {
+public class teacher extends user implements Serializable {
     
     
       int id;
@@ -36,14 +46,32 @@ public class teacher extends user {
         
     }
          
-    void write(teacher writeTea)
+    void write(teacher writeTea) throws FileNotFoundException, IOException
     {
         //write Teacher object in file
+         File f=new File("teacher.txt");
+         FileOutputStream fo = new FileOutputStream(f);
+        ObjectOutputStream oos = new ObjectOutputStream(fo);
+        oos.writeObject(writeTea);
+        oos.close();
+        
     }
     
-    void deletTeacher(int delTea)
+    void deletTeacher(int delTea) throws FileNotFoundException, IOException, ClassNotFoundException
     {
         //delete srudent from file
+        File f=new File("teacher.txt");
+         FileInputStream fo = new FileInputStream(f);
+        ObjectInputStream oos = new ObjectInputStream(fo);
+       teacher t1 = (teacher) oos.readObject();
+       Scanner sc= new Scanner(f);
+       while(sc.hasNext()){
+       if(t1.id==delTea)
+       {
+           oos.close();
+       }      
+         oos.close();
+    }
     }
     
    /* Teacher view(int view)
@@ -78,19 +106,26 @@ public class teacher extends user {
         this.pass = pass;
     }
     
-    boolean checkTeacher(int id,int pass)
+    boolean checkTeacher(int id,int pass) throws FileNotFoundException, IOException, ClassNotFoundException
         {
-            /*make a object and run while loop to find id first
-            if id matches read the object and check pass if matches both
-            return true;
-            */
-            
-            
-            return true;
+         
+          File f=new File("teacher.txt");
+         FileInputStream fo = new FileInputStream(f);
+        ObjectInputStream oos = new ObjectInputStream(fo);
+       teacher t1 = (teacher) oos.readObject(); 
+       oos.close();
+       Scanner sc= new Scanner(f);
+       while(sc.hasNext()){
+     
+      
+       }
+          return true;
         }
+            
+        
        
        
        
     
     
-}
+

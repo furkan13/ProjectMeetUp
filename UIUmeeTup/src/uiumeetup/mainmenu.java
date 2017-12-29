@@ -5,6 +5,10 @@
  */
 package uiumeetup;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author kruf
@@ -169,13 +173,20 @@ public class mainmenu extends javax.swing.JFrame {
 
        int pass=Integer.parseInt(setPass.getText());
        
-       boolean check=CheckClass.selectClass(id,pass);
+       boolean check = false;
+        try {
+            check = CheckClass.selectClass(id,pass);
+        } catch (IOException ex) {
+            Logger.getLogger(mainmenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
        if(check==true)
        {
            checkStatus.setText("login successful");
            
            String type=CheckClass.getClassType();
            CheckClass.selectFrame(type);
+           CheckClass.setId(id);
+           CheckClass.setPass(pass);
            this.setVisible(false);
            
            

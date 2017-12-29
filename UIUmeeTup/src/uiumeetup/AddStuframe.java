@@ -5,6 +5,10 @@
  */
 package uiumeetup;
 
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Asus
@@ -31,7 +35,7 @@ public class AddStuframe extends javax.swing.JFrame {
         txtname = new javax.swing.JTextField();
         txtid = new javax.swing.JTextField();
         ID = new javax.swing.JLabel();
-        Login = new javax.swing.JButton();
+        add = new javax.swing.JButton();
         Password = new javax.swing.JLabel();
         txtpass = new javax.swing.JTextField();
         Routine = new javax.swing.JLabel();
@@ -44,6 +48,7 @@ public class AddStuframe extends javax.swing.JFrame {
         txtdept = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtsemester = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,10 +62,10 @@ public class AddStuframe extends javax.swing.JFrame {
 
         ID.setText("ID:");
 
-        Login.setText("Login");
-        Login.addActionListener(new java.awt.event.ActionListener() {
+        add.setText("ADD");
+        add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginActionPerformed(evt);
+                addActionPerformed(evt);
             }
         });
 
@@ -79,6 +84,13 @@ public class AddStuframe extends javax.swing.JFrame {
         txtsemester.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtsemesterActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -114,15 +126,19 @@ public class AddStuframe extends javax.swing.JFrame {
                                     .addComponent(txtcourse)
                                     .addComponent(txtroutine)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
                         .addComponent(txtsemester)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,9 +175,11 @@ public class AddStuframe extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtroutine, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Routine, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(add, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -171,26 +189,83 @@ public class AddStuframe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnameActionPerformed
 
-    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
-        // TODO add your handling code here:
-         int id=Integer.parseInt(txtid.getText()); 
-
-       int pass=Integer.parseInt(txtpass.getText());
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
        String name=txtname.getText();
+         int id=Integer.parseInt(txtid.getText()); 
+        String dept=txtdept.getText();
+        int semester=Integer.parseInt(txtsemester.getText());
+       int pass=Integer.parseInt(txtpass.getText());
+       
        double cgpa=Double.parseDouble(txtcgpa.getText());
        String course=txtcourse.getText();
        String routine=txtroutine.getText();
-       String dept=txtdept.getText();
-       int semester=Integer.parseInt(txtsemester.getText());
-       Student stu=new Student(id, pass, name, dept, cgpa, semester, course);
-       stu.write(stu);
+     
+       
+       Student stu=new Student(name,id, dept,semester,pass,   cgpa,  course,routine);
+        try {
+            stu.write(stu);
+                    
+                    /*File f = new File("Student.txt");
+                    String s;
+                    s = stu.toString();
+                    BufferedWriter bw=null;
+                    try{
+                    bw= new BufferedWriter(new FileWriter(f,true));
+                    bw.newLine();
+                    bw.write(s);
+                    bw.close();
+                    } catch (IOException ex) {
+                    Logger.getLogger(AddStuframe.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    FileReader fileReader=null;
+                    BufferedReader bufferedReader=null;
+                    try {
+                    fileReader =new FileReader(f);
+                    bufferedReader=new BufferedReader(fileReader);
+                    String line=null;
+                    while((line=bufferedReader.readLine())!=null){
+                    System.out.println(line);
+                    }
+                    } catch (IOException e) {
+                    e.printStackTrace();
+                    }finally {
+                    try {
+                    if(fileReader!=null){
+                    fileReader.close();
+                    }
+                    if(bufferedReader!=null){
+                    bufferedReader.close();
+                    }
+                    } catch (IOException e) {
+                    e.printStackTrace();
+                    }
+                    }*/
+                    
+                    
+                    
+                    
+                    
+                    
+                    } catch (Exception ex) {
+            Logger.getLogger(AddStuframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            
+      
        
        
-    }//GEN-LAST:event_LoginActionPerformed
+       
+    }//GEN-LAST:event_addActionPerformed
 
     private void txtsemesterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsemesterActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtsemesterActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new Adminframe().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,10 +306,11 @@ public class AddStuframe extends javax.swing.JFrame {
     private javax.swing.JLabel CGPA;
     private javax.swing.JLabel COURSE;
     private javax.swing.JLabel ID;
-    private javax.swing.JButton Login;
     private javax.swing.JLabel Name;
     private javax.swing.JLabel Password;
     private javax.swing.JLabel Routine;
+    private javax.swing.JButton add;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtcgpa;

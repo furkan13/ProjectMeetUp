@@ -28,6 +28,7 @@ public class Adminframe extends javax.swing.JFrame {
         ADDSTUDENT = new javax.swing.JButton();
         DELETESTUDENT = new javax.swing.JButton();
         DELETETEACHER = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +60,13 @@ public class Adminframe extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Logout");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,6 +79,10 @@ public class Adminframe extends javax.swing.JFrame {
                     .addComponent(ADDTEACHER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ADDSTUDENT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 145, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,7 +95,9 @@ public class Adminframe extends javax.swing.JFrame {
                 .addComponent(DELETESTUDENT)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(DELETETEACHER)
-                .addGap(118, 118, 118))
+                .addGap(70, 70, 70)
+                .addComponent(jButton1)
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -115,6 +129,12 @@ public class Adminframe extends javax.swing.JFrame {
         new DeleteTeacherframe().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_DELETETEACHERActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new mainmenu().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,5 +176,6 @@ public class Adminframe extends javax.swing.JFrame {
     private javax.swing.JButton ADDTEACHER;
     private javax.swing.JButton DELETESTUDENT;
     private javax.swing.JButton DELETETEACHER;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
