@@ -5,6 +5,10 @@
  */
 package uiumeetup;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Asus
@@ -114,7 +118,13 @@ public class DeleteTeacherframe extends javax.swing.JFrame {
         // TODO add your handling code here:
         teacher tea=new teacher();
         int id=Integer.parseInt(txtid.getText());
-        tea.deletTeacher(id);
+        try {
+            tea.deletTeacher(id);
+        } catch (IOException ex) {
+            Logger.getLogger(DeleteTeacherframe.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DeleteTeacherframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_DeleteActionPerformed
 

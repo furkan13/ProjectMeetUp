@@ -105,6 +105,7 @@ public class DelStuframe extends javax.swing.JFrame {
             int id=Integer.parseInt(txtid.getText());
             Student delstu=new Student();
         try {
+            //TransferData td=new TransferData();
             delstu.deletStudent(id);
         } catch (IOException ex) {
             Logger.getLogger(DelStuframe.class.getName()).log(Level.SEVERE, null, ex);

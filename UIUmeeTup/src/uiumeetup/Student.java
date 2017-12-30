@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 
 package uiumeetup;
 import java.io.*;
-import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+//import java.util.Scanner;
 
 /**
  *
@@ -55,26 +51,30 @@ public class Student extends user implements Serializable{
          FileOutputStream fo = new FileOutputStream(f);
         ObjectOutputStream oos = new ObjectOutputStream(fo);
         oos.writeObject(writeStu);
+        oos.flush();
         oos.close();
         
         
     }
     
-    void deletStudent(int delstu) throws IOException, ClassNotFoundException
+     void deletStudent(int delstu) throws IOException, ClassNotFoundException
     {
         //delete srudent from file
         File f=new File("student.txt");
          FileInputStream fo = new FileInputStream(f);
         ObjectInputStream oos = new ObjectInputStream(fo);
+        
+        while(true){
        Student s1 = (Student) oos.readObject();
-       if(this.id==delstu)
+       if(s1.id==delstu )
        {
            oos.close();
-       }      
-         oos.close();
-        
+       }
+      
         
     }
+    }
+    
     
    /* Student view(int view)
     {
@@ -84,9 +84,9 @@ public class Student extends user implements Serializable{
 
     String changePass(int oldPass,int newPass)
     {
-        if(oldPass==this.getPass())
+        if(oldPass==this.getPassword())
         {
-            this.setPass(newPass);
+            this.setPassword(newPass);
             return("Password chaged successfully");
         }
         else 
@@ -100,41 +100,107 @@ public class Student extends user implements Serializable{
         
     }
     
-    boolean checkStudent(int id,int pass) throws FileNotFoundException, IOException, ClassNotFoundException
+     
+   boolean checkStudent(int id,int pass) throws Exception
         {
-            File f=new File("student.txt");
-         FileInputStream fo = new FileInputStream(f);
-        ObjectInputStream oos = new ObjectInputStream(fo);
-       Student s1 = (Student) oos.readObject();
-       Scanner sc=new Scanner(f);
-       
-       while(s1.id==id)
-       {
-           if(s1.pass==pass)
-           {
-               
-               oos.close();
-               return true;
-           }
-       }
-      
-         oos.close();
+            //File f=new File("student.txt");
+         //FileInputStream fo = new FileInputStream(f);
+        //ObjectInputStream oos = new ObjectInputStream(fo);
+            //System.out.println("in check");
+            /*File f=new File("student.txt");
+         FileInputStream fi = new FileInputStream(f);
+        ObjectInputStream ois = new ObjectInputStream(fi);
+        
+        Student s1 = (Student)ois.readObject();
+        System.out.println(s1);
+        
+        ois.close();*/
+        //return true;
+          ObjectInputStream in=null;
+        try {
+            in = new ObjectInputStream (new FileInputStream("student.txt"));
+        } catch (IOException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Student s1=new Student();
+        while (true){
+        
+                try {
+                    s1 = (Student) in.readObject();
+                   // System.out.println(s1);
+                    //System.out.println(s1.id+ "  " +s1.password+" id:"+id+" pass"+pass);
+                } catch (IOException ex) {
+                    Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+                }
+      // Scanner sc = new Scanner (f);
+      if(s1.id==id||s1==null )
+      {
+          if(s1.password==pass||s1==null )
+          {
+              try {
+                  in.close();
+              } catch (IOException ex) {
+                  Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+              }
           return true;
+          }
+          
+          return false;
+          
+      }
+        }
+        
+        
+        
+        
         }
             
     public String toString()
     {
         
-        return (""+name+ " "+id+ " "+ dept+" " + Trisemester + " "+password+" "+cgpa+" "+ course+ " "+ routine+" "+faculty);
+        return (""+name+ " "+id+ " "+ dept+" " + Trisemester + " pass"+password+" "+cgpa+" "+ course+ " "+ routine+" "+faculty);
     }
 
+   
     Student getclass(int id) throws Exception
     {
-        Student stu=new Student();
-        //
-        return stu;
+        ObjectInputStream in=null;
+        try {
+            in = new ObjectInputStream (new FileInputStream("student.txt"));
+        } catch (IOException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Student s1=new Student();
+        while (true)
+        {
+        
+                try {
+                    s1 = (Student) in.readObject();
+                   // System.out.println(s1);
+                    //System.out.println(s1.id+ "  " +s1.password+" id:"+id+" pass"+pass);
+                } catch (IOException ex) {
+                    Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                   // Scanner sc = new Scanner (f);
+      
+            if(s1.id==id||s1==null )
+     
+             {
+                      return s1;
+          
+             }
+          
+         
+          
+      }
+        }
     }
     
     
     
-}
+    
+

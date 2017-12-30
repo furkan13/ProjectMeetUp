@@ -199,49 +199,14 @@ public class AddStuframe extends javax.swing.JFrame {
        double cgpa=Double.parseDouble(txtcgpa.getText());
        String course=txtcourse.getText();
        String routine=txtroutine.getText();
+       //TransferData td=new TransferData();
      
        
        Student stu=new Student(name,id, dept,semester,pass,   cgpa,  course,routine);
         try {
             stu.write(stu);
                     
-                    /*File f = new File("Student.txt");
-                    String s;
-                    s = stu.toString();
-                    BufferedWriter bw=null;
-                    try{
-                    bw= new BufferedWriter(new FileWriter(f,true));
-                    bw.newLine();
-                    bw.write(s);
-                    bw.close();
-                    } catch (IOException ex) {
-                    Logger.getLogger(AddStuframe.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    FileReader fileReader=null;
-                    BufferedReader bufferedReader=null;
-                    try {
-                    fileReader =new FileReader(f);
-                    bufferedReader=new BufferedReader(fileReader);
-                    String line=null;
-                    while((line=bufferedReader.readLine())!=null){
-                    System.out.println(line);
-                    }
-                    } catch (IOException e) {
-                    e.printStackTrace();
-                    }finally {
-                    try {
-                    if(fileReader!=null){
-                    fileReader.close();
-                    }
-                    if(bufferedReader!=null){
-                    bufferedReader.close();
-                    }
-                    } catch (IOException e) {
-                    e.printStackTrace();
-                    }
-                    }*/
-                    
-                    
+                   
                     
                     
                     

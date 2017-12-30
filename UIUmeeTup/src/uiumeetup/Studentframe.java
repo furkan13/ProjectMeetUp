@@ -107,8 +107,18 @@ public class Studentframe extends javax.swing.JFrame {
         });
 
         jButton4.setText("Edit");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Change password");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Log out");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -196,12 +206,15 @@ public class Studentframe extends javax.swing.JFrame {
 
       int id=CheckClass.getId();
       Student stu=new Student();
+      //TransferData td=new TransferData();
       stu.id=id;
+        
         try {
             stu=stu.getclass(stu.id);
         } catch (Exception ex) {
             Logger.getLogger(Studentframe.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
       String cg=String.valueOf(stu.cgpa);
       txtarea.setText(cg);
               
@@ -218,6 +231,7 @@ public class Studentframe extends javax.swing.JFrame {
        int id=CheckClass.getId();
       Student stu=new Student();
       stu.id=id;
+     
         try {
             stu=stu.getclass(stu.id);
         } catch (Exception ex) {
@@ -232,6 +246,7 @@ public class Studentframe extends javax.swing.JFrame {
         int id=CheckClass.getId();
       Student stu=new Student();
       stu.id=id;
+      
         try {
             stu=stu.getclass(stu.id);
         } catch (Exception ex) {
@@ -247,6 +262,7 @@ public class Studentframe extends javax.swing.JFrame {
         int id=CheckClass.getId();
       Student stu=new Student();
       stu.id=id;
+      //TransferData td=new TransferData();
         try {
             stu=stu.getclass(stu.id);
         } catch (Exception ex) {
@@ -279,6 +295,7 @@ public class Studentframe extends javax.swing.JFrame {
         int id=CheckClass.getId();
       Student stu=new Student();
       stu.id=id;
+      //TransferData td=new TransferData();
         try {
             stu=stu.getclass(stu.id);
         } catch (Exception ex) {
@@ -287,6 +304,22 @@ public class Studentframe extends javax.swing.JFrame {
         
       txtarea.setText(stu.toString());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new stuPassChange().setVisible(true);
+        
+        
+      
+      
+      
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     
     public static void main(String args[]) {

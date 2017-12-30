@@ -33,8 +33,10 @@ public class CheckClass {
    
    public  static boolean selectClass(int id,int pass) throws IOException
    {
-       if(classType=="Admin")
+       //System.out.println("in checkkk:" +classType);
+       if(classType.equals("Admin"))
        {
+           //System.out.println("in adminnnnnn");
            Admin ad=new Admin();
            check=ad.checkAdmin(id, pass);
            return check;
@@ -42,7 +44,7 @@ public class CheckClass {
        }
        
        
-       else if(classType=="Teacher")
+       else if(classType.equals("Teacher"))
        {
            teacher tea=new teacher();
            try {
@@ -57,19 +59,24 @@ public class CheckClass {
        }
        
        
-       else if(classType=="Student")
+       else if(classType.equals("Student"))
        {
+           //System.out.println("in student");
            
                Student stu=new Student();
-           try {
+              // TransferData td=new TransferData();
+           try {           
                check=stu.checkStudent(id, pass);
-           } catch (FileNotFoundException ex) {
-               Logger.getLogger(CheckClass.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (ClassNotFoundException ex) {
+           } catch (Exception ex) {
                Logger.getLogger(CheckClass.class.getName()).log(Level.SEVERE, null, ex);
            }
            
            
+           
+       }
+       else
+       {
+           System.out.println("ase naaaaaa");
        }
        return check;
        
